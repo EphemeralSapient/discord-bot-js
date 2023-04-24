@@ -1,0 +1,10 @@
+
+# Discord bot config
+config.json
+
+# Editor files
+.vscode/
+*.log
+
+# Environment variables
+.env
