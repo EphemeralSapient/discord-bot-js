@@ -5,6 +5,8 @@ const path = require('node:path');
 const { Client, Collection, GatewayIntentBits } = require('discord.js');
 const token = process.env.token;
 const client = new Client({ intents: [GatewayIntentBits.Guilds] });
+const keep_alive = require('./keep_alive.js')
+
 
 // Acceptable commands stored as collections.
 
