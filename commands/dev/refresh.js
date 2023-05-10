@@ -6,7 +6,7 @@ module.exports = {
         .setName('refresh')
         .setDescription('Bot will refresh'),
     async execute(interaction) {
-        await interaction.deferReply();
+        await interaction.editReply("Executing git pull request");
         exec('git pull', async(error, stdout, stderr) => {
             if (error) {
                 console.error(`exec error: ${error}`);
