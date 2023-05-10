@@ -6,6 +6,6 @@ module.exports = {
         .setName('foreverthink')
         .setDescription('Bot will think forever.'),
     async execute(interaction) {
-        await interaction.deferReply();
+        console.log("thinking...");
     },
 };
