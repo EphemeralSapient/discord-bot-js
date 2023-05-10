@@ -8,6 +8,6 @@ module.exports = {
     async execute(interaction) {
         await interaction.deferReply();
         await wait(1000);
-        await interaction.editReply(`channel id is ${interaction.channel.id}`);
+        await interaction.editReply(`shut the fuck up`);
     },
 };
