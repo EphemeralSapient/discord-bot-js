@@ -10,11 +10,11 @@ module.exports = {
         exec('git pull', async(error, stdout, stderr) => {
             if (error) {
                 console.error(`exec error: ${error}`);
+                await interaction.editReply("Error occurred. \n ${error}")
                 return;
             }
             console.log(`stdout: ${stdout}`);
-            console.error(`stderr: ${stderr}`);
-            await interaction.editReply('Bot has been refreshed!');
+            await interaction.editReply(stdout);
         });
     },
 };
