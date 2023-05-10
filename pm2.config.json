@@ -1,0 +1,6 @@
+{
+    "name": "my-app",
+    "script": "nodemon index.js",
+    "watch": true,
+    "ignore_watch": ["node_modules"]
+}
