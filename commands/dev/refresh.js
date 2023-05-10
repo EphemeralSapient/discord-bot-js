@@ -14,7 +14,7 @@ module.exports = {
             }
             console.log(`stdout: ${stdout}`);
             console.error(`stderr: ${stderr}`);
-            await interaction.followUp('Bot has been refreshed!');
+            await interaction.editReply('Bot has been refreshed!');
         });
     },
 };
