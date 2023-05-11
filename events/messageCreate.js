@@ -22,8 +22,10 @@ module.exports = {
         // AKINE? SCREW IT
         if (message.author.id == 576663196186837003 && lmsg.includes("uwu")) await message.channel.send("<@576663196186837003> UWU????????????????????????");
 
-        if (lmsg.includes("https://tenor.com/view/hug-anime-cute-gif-25588757")) await message.channel.send("YOU WANT TO HUG? I WILL HUG YOU! LOOK AT ME, MY EYES https://cdn.discordapp.com/attachments/1086613044429324309/1106219756459147425/image.png");
-
+        if (lmsg.includes("https://tenor.com/view/hug-anime-cute-gif-25588757")) {
+            await message.channel.send(`<@${message.author.id}> WANT TO HUG? I WILL HUG YOU! LOOK AT ME, MY EYES https://cdn.discordapp.com/attachments/1086613044429324309/1106219756459147425/image.png`);
+            await message.delete();
+        }
         console.log(message);
         //await message.channel.send(`message : ${message}`);
     },
