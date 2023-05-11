@@ -1,11 +1,12 @@
 const { Events } = require('discord.js');
+require('dotenv').config();
 
 module.exports = {
     name: Events.MessageCreate,
-    execute(message) {
+    async execute(message) {
+        if (message.author.id == process.env.clientId) return;
+
         console.log(message);
-        (async() => {
-            await message.channel.send(`message : ${message.toString()}`);
-        })();
+        await message.channel.send(`message : ${message}`);
     },
 };
