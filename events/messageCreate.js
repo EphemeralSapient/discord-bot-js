@@ -1,6 +1,14 @@
 const { Events } = require('discord.js');
 require('dotenv').config();
 
+const uwuStop = [
+    "https://i.pinimg.com/736x/56/4c/86/564c86edfca94adcd713120dcd630bdb.jpg",
+    "https://cdn.discordapp.com/attachments/1086613044429324309/1106210805411762297/avatars-DiioKOwRdAbVLXTA-LuxClw-t500x500.png",
+    "https://i.redd.it/xa8cqdtatbc41.jpg",
+    "https://i.pinimg.com/originals/6e/c2/a1/6ec2a17d56335388b2f928b3c3976c4a.jpg",
+    "https://cdn.discordapp.com/attachments/1086613044429324309/1106211712274808882/image.png"
+];
+
 module.exports = {
     name: Events.MessageCreate,
     async execute(message) {
@@ -9,10 +17,12 @@ module.exports = {
         let msg = String(message.content);
         let lmsg = msg.toLowerCase();
 
-        if (lmsg.includes("uwu")) await message.channel.send("FUCCCCCCCCK");
+        if (lmsg.includes("uwu")) await message.channel.send(uwuStop[Math.floor(Math.random() * imageUrls.length)]);
+
+
 
         console.log(message);
-        await message.channel.send(`message : ${message}`);
+        //await message.channel.send(`message : ${message}`);
     },
 };
 
