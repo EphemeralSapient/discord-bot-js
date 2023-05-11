@@ -26,6 +26,8 @@ module.exports = {
             }
         }
 
+        if (lmsg.includes("https://tenor.com/view/hug-anime-cute-gif-25588757")) await message.channel.send("What the fuck shall I do, master?");
+
         console.log(message);
         //await message.channel.send(`message : ${message}`);
     },
