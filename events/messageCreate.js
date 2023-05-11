@@ -20,11 +20,7 @@ module.exports = {
         // HATE THE F##KING UWU
         if (lmsg.includes("uwu")) await message.channel.send(uwuStop[Math.floor(Math.random() * uwuStop.length)]);
         // AKINE? SCREW IT
-        if (message.author.id == 576663196186837003 && lmsg.includes("uwu")) {
-            for (var i = 0; i < uwuStop.length; i) {
-                await message.channel.send("<@576663196186837003> UWU????????????????????????");
-            }
-        }
+        if (message.author.id == 576663196186837003 && lmsg.includes("uwu")) await message.channel.send("<@576663196186837003> UWU????????????????????????");
 
         if (lmsg.includes("https://tenor.com/view/hug-anime-cute-gif-25588757")) await message.channel.send("What the fuck shall I do, master?");
 
