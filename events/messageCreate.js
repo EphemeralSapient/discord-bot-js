@@ -17,7 +17,7 @@ module.exports = {
         let msg = String(message.content);
         let lmsg = msg.toLowerCase();
 
-        if (lmsg.includes("uwu")) await message.channel.send(uwuStop[Math.floor(Math.random() * imageUrls.length)]);
+        if (lmsg.includes("uwu")) await message.channel.send(uwuStop[Math.floor(Math.random() * uwuStop.length)]);
 
 
 
