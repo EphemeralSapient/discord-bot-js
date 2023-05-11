@@ -2,6 +2,6 @@
     "name": "my-app",
     "script": "nodemon index.js",
     "watch": true,
-    "ignore_watch": ["node_modules"],
+    "ignore_watch": ["node_modules", ".cache"],
     "instances": 1
 }
