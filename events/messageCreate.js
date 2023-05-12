@@ -1,6 +1,5 @@
 const { Events } = require('discord.js');
-import { Bard } from "googlebard";
-
+const Bard = require("googlebard");
 require('dotenv').config();
 
 const uwuStop = [
