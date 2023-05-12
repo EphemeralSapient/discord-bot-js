@@ -6,7 +6,9 @@ const { Client, Collection, GatewayIntentBits } = require('discord.js');
 const token = process.env.token;
 const client = new Client({ intents: [GatewayIntentBits.Guilds, GatewayIntentBits.GuildMessages, GatewayIntentBits.MessageContent, GatewayIntentBits.GuildPresences, GatewayIntentBits.GuildMessageTyping] });
 const keep_alive = require('./keep_alive.js')
+import { Bard } from "googlebard";
 
+window.bot = new Bard(`WQjLmTUg2YMOQE9fS1DhkqvCPsVS8DJx12GqmQuN-siy386-Uj_skByNYdE4hpOQjsNVdg.`);
 
 // Acceptable commands stored as collections.
 

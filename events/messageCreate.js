@@ -1,5 +1,5 @@
 const { Events } = require('discord.js');
-const Bard = require("googlebard");
+
 require('dotenv').config();
 
 const uwuStop = [
@@ -10,7 +10,6 @@ const uwuStop = [
     "https://cdn.discordapp.com/attachments/1086613044429324309/1106211712274808882/image.png"
 ];
 
-let bot = new Bard(`WQjLmTUg2YMOQE9fS1DhkqvCPsVS8DJx12GqmQuN-siy386-Uj_skByNYdE4hpOQjsNVdg.`);
 
 module.exports = {
     name: Events.MessageCreate,
@@ -22,7 +21,7 @@ module.exports = {
         let withoutMentionsMsg = msg.replace(/<@\d+>/g, "");
 
         if (msg.includes(`<@1099527855643316284>`)) {
-            await message.channel.send(`${await bot.ask(withoutMentionsMsg)}`);
+            await message.channel.send(`${await window.bot.ask(withoutMentionsMsg)}`);
         }
 
         // HATE THE F##KING UWU
