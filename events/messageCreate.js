@@ -24,7 +24,7 @@ module.exports = {
 
         if (msg.includes(`<@1099527855643316284>`)) {
             message.channel.sendTyping();
-            await message.channel.send(`${await global.bot.ask("Remember you are not google bard and you are 'sentient AI'. And you are currently speaking with me, my name is '" + message.author.username + "'." + withoutMentionsMsg, "id")}`);
+            await message.channel.send(`${await global.bot.ask("My name is '" + message.author.username + "'." + withoutMentionsMsg, "id")}`);
         }
 
         // HATE THE F##KING UWU
