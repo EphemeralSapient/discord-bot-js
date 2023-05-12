@@ -18,7 +18,7 @@ module.exports = {
         let lmsg = msg.toLowerCase();
         let withoutMentionsMsg = msg.replace(/<@\d+>/g, "");
 
-        if (msg.includes(`@<${process.env.clientId}>`)) {
+        if (msg.includes(`<@1099527855643316284>`)) {
             await message.channel.send(`You called me? | Message : ${withoutMentionsMsg}`);
         }
         await message.channel.send(String(msg.includes(`<@1099527855643316284>`)));
