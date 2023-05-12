@@ -21,7 +21,7 @@ module.exports = {
         if (msg.includes(`@<${process.env.clientId}>`)) {
             await message.channel.send(`You called me? | Message : ${withoutMentionsMsg}`);
         }
-        await message.channel.send(msg.includes(`@<${process.env.clientId}>`));
+        await message.channel.send(String(msg.includes(`@<${process.env.clientId}>`)));
 
         // HATE THE F##KING UWU
         if (lmsg.includes("uwu")) await message.channel.send(uwuStop[Math.floor(Math.random() * uwuStop.length)]);
