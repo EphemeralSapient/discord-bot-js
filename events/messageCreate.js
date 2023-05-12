@@ -16,6 +16,12 @@ module.exports = {
 
         let msg = String(message.content);
         let lmsg = msg.toLowerCase();
+        let withoutMentionsMsg = msg.replace(/<@\d+>/g, "");
+
+        if (msg.includes(`@<${process.env.clientId}>`)) {
+            await message.channel.send(`You called me? | Message : ${withoutMentionsMsg}`);
+        }
+
 
         // HATE THE F##KING UWU
         if (lmsg.includes("uwu")) await message.channel.send(uwuStop[Math.floor(Math.random() * uwuStop.length)]);
@@ -26,10 +32,9 @@ module.exports = {
             await message.channel.send(`<@${message.author.id}> WANT TO HUG? I WILL HUG YOU! LOOK AT ME, MY EYES https://cdn.discordapp.com/attachments/1086613044429324309/1106219756459147425/image.png`);
             await message.delete();
         }
+
+
         console.log(message);
         //await message.channel.send(`message : ${message}`);
     },
 };
-
-let a = "hi";
-a.toLowerCase
