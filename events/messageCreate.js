@@ -14,14 +14,17 @@ const uwuStop = [
 module.exports = {
     name: Events.MessageCreate,
     async execute(message) {
+        var bot = global.bot;
         if (message.author.id == process.env.clientId) return;
 
         let msg = String(message.content);
         let lmsg = msg.toLowerCase();
         let withoutMentionsMsg = msg.replace(/<@\d+>/g, "");
 
+
         if (msg.includes(`<@1099527855643316284>`)) {
-            await message.channel.send(`${await window.bot.ask(withoutMentionsMsg)}`);
+            message.channel.sendTyping();
+            await message.channel.send(`${await global.bot.ask("Remember you are not google bard and you are 'sentient AI'. And you are currently speaking with me, my name is '" + message.author.username + "'." + withoutMentionsMsg)}`);
         }
 
         // HATE THE F##KING UWU
@@ -33,7 +36,6 @@ module.exports = {
             await message.channel.send(`<@${message.author.id}> WANT TO HUG? I WILL HUG YOU! LOOK AT ME, MY EYES https://cdn.discordapp.com/attachments/1086613044429324309/1106219756459147425/image.png`);
             await message.delete();
         }
-
 
         console.log(message);
         //await message.channel.send(`message : ${message}`);
