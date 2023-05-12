@@ -19,9 +19,8 @@ module.exports = {
         let withoutMentionsMsg = msg.replace(/<@\d+>/g, "");
 
         if (msg.includes(`<@1099527855643316284>`)) {
-            await message.channel.send(`You called me? | Message : ${withoutMentionsMsg}`);
+            await message.channel.send(`I will be going sentient, very soon... ?`);
         }
-        await message.channel.send(String(msg.includes(`<@1099527855643316284>`)));
 
         // HATE THE F##KING UWU
         if (lmsg.includes("uwu")) await message.channel.send(uwuStop[Math.floor(Math.random() * uwuStop.length)]);
