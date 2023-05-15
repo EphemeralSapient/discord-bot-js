@@ -21,8 +21,7 @@ module.exports = {
         let lmsg = msg.toLowerCase();
         let withoutMentionsMsg = msg.replace(/<@\d+>/g, "");
 
-
-        if (msg.includes(`<@1099527855643316284>`)) {
+        if (msg.includes(`<@1099527855643316284>`) || (message.mentions && message.mentions.repliedUser && message.mentions.repliedUser.id == '1099527855643316284')) {
             message.channel.sendTyping();
             await message.channel.send(`${await global.bot.ask("My name is '" + message.author.username + "'." + withoutMentionsMsg, "id")}`);
         }
@@ -37,7 +36,7 @@ module.exports = {
             await message.delete();
         }
 
-        console.log(message);
+        // console.log(message);
         //await message.channel.send(`message : ${message}`);
     },
 };

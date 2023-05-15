@@ -7,18 +7,6 @@ const token = process.env.token;
 const client = new Client({ intents: [GatewayIntentBits.Guilds, GatewayIntentBits.GuildMessages, GatewayIntentBits.MessageContent, GatewayIntentBits.GuildPresences, GatewayIntentBits.GuildMessageTyping] });
 const keep_alive = require('./keep_alive.js');
 
-import ("googlebard").then(async(googlebard) => {
-    let bot = new googlebard.Bard(`__Secure-1PSID=WQjLmTUg2YMOQE9fS1DhkqvCPsVS8DJx12GqmQuN-siy386-Uj_skByNYdE4hpOQjsNVdg.`);
-    global.bot = bot;
-    let repl = await bot.ask("Hello there!");
-    console.log(repl);
-
-    return bot;
-}).then((response) => {
-    console.log("Connected to googlebard");
-}).catch((error) => {
-    console.error(error);
-});
 // Acceptable commands stored as collections.
 
 client.commands = new Collection();
@@ -58,6 +46,38 @@ for (const file of eventFiles) {
     }
 }
 
+// Loading the AI Bots
+
+import ("googlebard").then(async(googlebard) => {
+    let bot = new googlebard.Bard(`__Secure-1PSID=WQjLmTUg2YMOQE9fS1DhkqvCPsVS8DJx12GqmQuN-siy386-Uj_skByNYdE4hpOQjsNVdg.`);
+    global.bot = bot
+    let repl = await bot.ask("Hello there!")
+    console.log("BARD : " + repl)
+
+    return bot
+}).then((response) => {
+    console.log("Connected to googlebard")
+}).catch((error) => {
+    console.error(error)
+})
+
+import ("bing-chat").then(async(BingChat) => {
+    let api = new BingChat.BingChat({
+        cookie: "1X176K581eBUDWuLSgcEdF-47noxkii7UbCknv9b7_uYxmYjtQPYf_MUbNyAsIgvGpE2wGqXgssY6Rmbik_X9YRS0lW9ISI8rgCdlRpS5R0JWCNUOseK_BJN3ZGD6ouAMfyhPn0r_79ZumEL-SOesZ6InusUhq_x2umEVYMfbJLlJBXTGosSVoyhIbrGI5dA5InHwv3tFu9OWh6lacjQenFL3i9WzC44Rd-JOSnLBkSU"
+    })
+
+    global.bingApi = api
+
+    const res = await api.sendMessage('Hello World!')
+
+    global.bingContext = res
+
+    console.log("BING :" + res.text)
+}).then((response) => {
+    console.log("Connected to bing chat");
+}).catch((error) => {
+    console.error(error)
+});
 
 // Start listening.
 

@@ -1,6 +1,14 @@
 {
     "conversations": {
-        "rows": [],
+        "rows": [
+            {
+                "id": "id",
+                "c": "c_40ab884dce2ef878",
+                "r": "r_f9201152a662d40f",
+                "rc": "rc_f9201152a662d2a5",
+                "lastActive": 1684166078180
+            }
+        ],
         "name": "conversations"
     }
 }

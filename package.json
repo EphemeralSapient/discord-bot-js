@@ -1,5 +1,7 @@
 {
     "dependencies": {
+        "bing-chat": "^0.2.3",
+        "chatgpt": "^5.2.4",
         "discord.js": "^14.9.0",
         "dotenv": "^16.0.3",
         "googlebard": "^1.0.4",
