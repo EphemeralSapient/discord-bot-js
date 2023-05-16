@@ -30,7 +30,7 @@ module.exports = {
         if (global.chatReadAI_state && (withoutMentionsMsg.includes("semp.js") || withoutMentionsMsg.includes("semp ai") || withoutMentionsMsg.includes("semp js"))) {
             message.channel.sendTyping()
             let verify = String(await global.bot.ask(`consider yourself as "semp.js" and your creator name is "semp" now read this message "${lmsg}" sent by user "${message.author.username}". Give me your response`))
-            verify = verify.slice(verify.indexOf("\n") + 1).trim()
+            verify = verify.slice(verify.indexOf(".") + 1).trim()
             if (verify.length != 0) {
                 await message.channel.send(verify)
             }
