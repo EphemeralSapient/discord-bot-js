@@ -1,4 +1,5 @@
 const { Events } = require('discord.js');
+const wait = require('node:timers/promises').setTimeout;
 
 require('dotenv').config();
 
@@ -15,15 +16,24 @@ module.exports = {
     name: Events.MessageCreate,
     async execute(message) {
         var bot = global.bot;
-        if (message.author.id == process.env.clientId) return;
+        if (message.author.id == process.env.clientId || message.bot) return;
 
-        let msg = String(message.content);
+        let msg = String(message.content).replace('"', "'");
         let lmsg = msg.toLowerCase();
         let withoutMentionsMsg = msg.replace(/<@\d+>/g, "");
 
         if (msg.includes(`<@1099527855643316284>`) || (message.mentions && message.mentions.repliedUser && message.mentions.repliedUser.id == '1099527855643316284')) {
             message.channel.sendTyping();
-            await message.channel.send(`${await global.bot.ask("My name is '" + message.author.username + "'." + withoutMentionsMsg, "id")}`);
+            await message.channel.send(`${await global.bot.ask("My username is '" + message.author.username + "'." + withoutMentionsMsg, "id")}`);
+        }
+
+        if (global.chatReadAI_state && (withoutMentionsMsg.includes("semp.js") || withoutMentionsMsg.includes("semp ai") || withoutMentionsMsg.includes("semp js"))) {
+            message.channel.sendTyping()
+            let verify = String(await global.bot.ask(`consider yourself as "semp.js" and your creator name is "semp" now read this message "${lmsg}" sent by user "${message.author.username}". Give me your response`))
+            verify = verify.slice(verify.indexOf("\n") + 1).trim()
+            if (verify.length != 0) {
+                await message.channel.send(verify)
+            }
         }
 
         // HATE THE F##KING UWU

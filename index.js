@@ -48,12 +48,14 @@ for (const file of eventFiles) {
 
 // Loading the AI Bots
 
+global.chatReadAI_state = false
+
 import ("googlebard").then(async(googlebard) => {
     let bot = new googlebard.Bard(`__Secure-1PSID=WQjLmTUg2YMOQE9fS1DhkqvCPsVS8DJx12GqmQuN-siy386-Uj_skByNYdE4hpOQjsNVdg.`);
     global.bot = bot
     let repl = await bot.ask("Hello there!")
     console.log("BARD : " + repl)
-
+    global.chatReadAI_state = true
     return bot
 }).then((response) => {
     console.log("Connected to googlebard")
