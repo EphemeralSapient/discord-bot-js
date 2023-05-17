@@ -27,7 +27,7 @@ module.exports = {
             await message.channel.send(`${await global.bot.ask("My username is '" + message.author.username + "'." + withoutMentionsMsg, "id")}`);
         }
 
-        if (global.chatReadAI_state && (withoutMentionsMsg.includes("semp.js") || withoutMentionsMsg.includes("semp ai") || withoutMentionsMsg.includes("semp js"))) {
+        if (global.chatReadAI_state && (withoutMentionsMsg.includes("semp.js") || withoutMentionsMsg.includes("semp ai") || withoutMentionsMsg.includes("semppy") || withoutMentionsMsg.includes("semp js"))) {
             message.channel.sendTyping()
             let verify = String(await global.bot.ask(`consider yourself as "semp.js" and your creator name is "semp" now read this message "${lmsg}" sent by user "${message.author.username}". Give me your response`))
             verify = verify.slice(verify.indexOf(".") + 1).trim()
