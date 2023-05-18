@@ -81,6 +81,22 @@ import ("bing-chat").then(async(BingChat) => {
     console.error(error)
 });
 
+// Setting the global functions
+
+global.sendMessage = async(messageString, channel) => {
+    const chunkSize = 1500;
+    const chunks = [];
+
+    for (let i = 0; i < messageString.length; i += chunkSize) {
+        chunks.push(messageString.substring(i, i + chunkSize));
+    }
+
+    chunks.forEach(async(chunk) => {
+        await channel.send(chunk);
+    });
+};
+
+
 // Start listening.
 
 client.login(token);
