@@ -113,13 +113,6 @@ global.generateCat = async() => {
     }
 }
 
-// Enter your API key here
-const apiKey = 'YOUR_API_KEY';
-
-// Call the function to fetch a random cat image
-getRandomCatImage(apiKey);
-
-
 
 // Start listening.
 
