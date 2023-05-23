@@ -26,7 +26,7 @@ module.exports = {
         if (lmsg == "cat") {
             await message.channel.sendTyping()
             let url = String(await global.generateCat());
-            await message.channel.sendMessage(url);
+            await global.sendMessage(url);
         }
 
         // Brain works
