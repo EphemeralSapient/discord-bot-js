@@ -104,7 +104,7 @@ global.generateCat = async() => {
             }
         });
         const data = await response.json();
-
+        console.log(data);
         // Extract the image URL from the response
         return data[0].url;
 
