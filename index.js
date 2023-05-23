@@ -96,6 +96,30 @@ global.sendMessage = async(messageString, channel) => {
     });
 };
 
+global.generateCat = async() => {
+    try {
+        const response = await fetch('https://api.thecatapi.com/v1/images/search', {
+            headers: {
+                'x-api-key': "live_XO0NiwPJmuxQzYcCdKmGl2UX1OSkdk7rizGtCIccQCC0fMYojU6tJ3vZWtOIEgFR"
+            }
+        });
+        const data = await response.json();
+
+        // Extract the image URL from the response
+        return data[0].url;
+
+    } catch (error) {
+        return 'Error fetching cat image:';
+    }
+}
+
+// Enter your API key here
+const apiKey = 'YOUR_API_KEY';
+
+// Call the function to fetch a random cat image
+getRandomCatImage(apiKey);
+
+
 
 // Start listening.
 

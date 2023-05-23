@@ -22,11 +22,17 @@ module.exports = {
         let lmsg = msg.toLowerCase()
         let withoutMentionsMsg = lmsg.replace(/<@\d+>/g, "")
 
+        // CAT!!!
+        if (lmsg == "cat") {
+            await message.channel.sendTyping()
+            await message.channel.sendMessage(await global.generateCat());
+        }
+
+        // Brain works
         if (msg.includes(`<@1099527855643316284>`) || (message.mentions && message.mentions.repliedUser && message.mentions.repliedUser.id == '1099527855643316284')) {
             message.channel.sendTyping()
             await global.sendMessage(`${await global.bot.ask("My username is '" + message.author.username + "'." + withoutMentionsMsg, "id")}`, message.channel)
         }
-
         if (global.chatReadAI_state && (withoutMentionsMsg.includes("semp.js") || withoutMentionsMsg.includes("semp ai") || withoutMentionsMsg.includes("semppy") || withoutMentionsMsg.includes("semp js"))) {
             message.channel.sendTyping()
             let verify = String(await global.bot.ask(`consider yourself as "semp.js" and your creator name is "semp" now read this message "${lmsg}" sent by user "${message.author.username}". Give me your response`))
