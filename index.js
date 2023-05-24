@@ -98,7 +98,7 @@ global.sendMessage = async(messageString, channel) => {
 
 global.generateCat = async() => {
     try {
-        const response = await fetch('https://api.thecatapi.com/v1/images/search', {
+        const response = await fetch('https://api.thecatapi.com/v1/images/search?mime_types=gif', {
             headers: {
                 'x-api-key': "live_XO0NiwPJmuxQzYcCdKmGl2UX1OSkdk7rizGtCIccQCC0fMYojU6tJ3vZWtOIEgFR"
             }
