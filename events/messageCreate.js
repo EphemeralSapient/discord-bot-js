@@ -21,12 +21,14 @@ module.exports = {
         let msg = String(message.content).replace('"', "'")
         let lmsg = msg.toLowerCase()
         let withoutMentionsMsg = lmsg.replace(/<@\d+>/g, "")
-
+        let mentionIDs = lmsg.match(/<@(\d+)>/g).map(mention => mention.replace(/<@(\d+)>/g, '$1'));
 
         // Mentions check and notify the user when online.
         if (withoutMentionsMsg != lmsg) {
             // Message contains mention
-
+            if (global["debug_mention"] == "true") {
+                await message.channel.send(String(mentionIDs.length) + " mentions : " + mentionIDs)
+            }
         }
 
         // CAT!!!
