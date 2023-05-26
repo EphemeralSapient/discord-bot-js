@@ -33,7 +33,7 @@ module.exports = {
             fastFlagsData[name] = value;
             fs.writeFileSync(fastFlagsFile, JSON.stringify(fastFlagsData, null, 4));
 
-            await interaction.editReply("Changed the fast flag value | [" + name + "] " + oldValue + " >> " + value);
+            await interaction.editReply("Changed the fast flag value | [`" + name + "`] " + oldValue + " >> " + value);
         } catch (error) {
             // Handle any errors
             console.log("FF Operation Error: " + error);
