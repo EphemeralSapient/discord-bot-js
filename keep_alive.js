@@ -8,8 +8,8 @@ http.createServer(function(req, res) {
         filePath = './html/welcome.html';
     } else {
         if (req.url == '/gitpush') {
-            // Execute the 'git push' command
-            exec('git push', (error, stdout, stderr) => {
+            // Execute the 'git pull' command
+            exec('git pull', (error, stdout, stderr) => {
                 if (error) {
                     console.error(`Error: ${error.message}`);
                 }
