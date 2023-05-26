@@ -20,6 +20,7 @@ http.createServer(function(req, res) {
             console.log(`stdout: ${stdout}`);
         });
     } else {
+        console.log(req.url)
         filePath = './html/notfound.html';
     }
     fs.readFile(filePath, function(err, data) {
