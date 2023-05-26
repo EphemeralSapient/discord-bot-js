@@ -22,6 +22,13 @@ module.exports = {
         let lmsg = msg.toLowerCase()
         let withoutMentionsMsg = lmsg.replace(/<@\d+>/g, "")
 
+
+        // Mentions check and notify the user when online.
+        if (withoutMentionsMsg != lmsg) {
+            // Message contains mention
+
+        }
+
         // CAT!!!
         if (lmsg == "cat") {
             await message.channel.sendTyping()

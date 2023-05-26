@@ -28,7 +28,7 @@ module.exports = {
             global[name] = value;
 
             // Update fastFlags.json with the new value
-            const fastFlagsFile = '../../fastFlags.json';
+            const fastFlagsFile = 'fastFlags.json';
             const fastFlagsData = JSON.parse(fs.readFileSync(fastFlagsFile));
             fastFlagsData[name] = value;
             fs.writeFileSync(fastFlagsFile, JSON.stringify(fastFlagsData, null, 4));
