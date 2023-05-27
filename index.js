@@ -96,6 +96,21 @@ global.sendMessage = async(messageString, channel) => {
     });
 };
 
+global.getFFlag = async(name) => {
+    const fastFlagsFile = 'fastFlags.json';
+    const fastFlagsData = JSON.parse(fs.readFileSync(fastFlagsFile));
+    return fastFlagsData[name]
+}
+
+global.setFFlag = async(name, value) => {
+    const fastFlagsFile = 'fastFlags.json';
+    const fastFlagsData = JSON.parse(fs.readFileSync(fastFlagsFile));
+    let oldValue = fastFlagsData[name] || "NULL";
+    fastFlagsData[name] = value;
+    fs.writeFileSync(fastFlagsFile, JSON.stringify(fastFlagsData, null, 4));
+    return oldValue;
+}
+
 global.generateCat = async() => {
     try {
         const response = await fetch('https://api.thecatapi.com/v1/images/search?mime_types=gif', {

@@ -24,15 +24,8 @@ module.exports = {
         const value = interaction.options.getString('value');
 
         try {
-            let oldValue = global[name] || "NULL";
-            global[name] = value;
-
             // Update fastFlags.json with the new value
-            const fastFlagsFile = 'fastFlags.json';
-            const fastFlagsData = JSON.parse(fs.readFileSync(fastFlagsFile));
-            fastFlagsData[name] = value;
-            fs.writeFileSync(fastFlagsFile, JSON.stringify(fastFlagsData, null, 4));
-
+            let oldValue = global.setFFlag(name, value);
             await interaction.editReply("Changed the fast flag value | [ `" + name + "` ] " + oldValue + " >> " + value);
         } catch (error) {
             // Handle any errors
