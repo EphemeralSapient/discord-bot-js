@@ -14,7 +14,7 @@ module.exports = {
         .addStringOption(option =>
             option.setName('value')
             .setDescription('the value for the given fast flag')
-            .setRequired(true)
+            .setRequired(false)
         ),
     async execute(interaction) {
         await interaction.editReply("Running the code...");
@@ -23,14 +23,26 @@ module.exports = {
         const name = interaction.options.getString('name');
         const value = interaction.options.getString('value');
 
-        try {
-            // Update fastFlags.json with the new value
-            let oldValue = global.setFFlag(name, value);
-            await interaction.editReply("Changed the fast flag value | [ `" + name + "` ] " + oldValue + " >> " + value);
-        } catch (error) {
-            // Handle any errors
-            console.log("FF Operation Error: " + error);
-            await interaction.editReply("Failed to execute the operation | " + error);
+        if (value != null) {
+            try {
+                // Update fastFlags.json with the new value
+                let oldValue = global.setFFlag(name, value);
+                await interaction.editReply("Changed the fast flag value | [ `" + name + "` ] " + oldValue + " >> " + value);
+            } catch (error) {
+                // Handle any errors
+                console.log("FF Operation Error: " + error);
+                await interaction.editReply("Failed to execute the operation | " + error);
+            }
+        } else {
+            try {
+                // Fetch the fast flag value from fastFlag.json
+                let oldValue = global.getFFlag(name);
+                await interaction.editReply("The fast flag value  [ `" + name + "` ] >>" + value);
+            } catch (error) {
+                // Handle any errors
+                console.log("FF Operation Error: " + error);
+                await interaction.editReply("Failed to execute the operation | " + error);
+            }
         }
     },
 };
