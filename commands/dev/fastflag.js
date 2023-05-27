@@ -37,7 +37,7 @@ module.exports = {
             try {
                 // Fetch the fast flag value from fastFlag.json
                 let oldValue = global.getFFlag(name);
-                await interaction.editReply("The fast flag value  [ `" + name + "` ] >>" + value);
+                await interaction.editReply("The fast flag value  [ `" + name + "` ] >> " + value);
             } catch (error) {
                 // Handle any errors
                 console.log("FF Operation Error: " + error);
