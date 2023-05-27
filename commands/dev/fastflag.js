@@ -26,7 +26,7 @@ module.exports = {
         if (value != null) {
             try {
                 // Update fastFlags.json with the new value
-                let oldValue = global.setFFlag(name, value);
+                const oldValue = global.setFFlag(name, value);
                 await interaction.editReply("Changed the fast flag value | [ `" + name + "` ] " + oldValue + " >> " + value);
             } catch (error) {
                 // Handle any errors
@@ -36,7 +36,7 @@ module.exports = {
         } else {
             try {
                 // Fetch the fast flag value from fastFlag.json
-                let oldValue = global.getFFlag(name);
+                const value = global.getFFlag(name);
                 await interaction.editReply("The fast flag value  [ `" + name + "` ] >> " + value);
             } catch (error) {
                 // Handle any errors
