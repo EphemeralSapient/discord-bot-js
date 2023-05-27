@@ -12,7 +12,7 @@ module.exports = {
             console.error(`Unable to find guild with ID ${guildId}`);
             return;
         }
-
+        global.defaultGuild = guild;
         const channel = guild.channels.cache.get(channelId);
         if (!channel) {
             console.error(`Unable to find channel with ID ${channelId}`);
@@ -22,7 +22,7 @@ module.exports = {
         global["defaultChannel"] = channel;
 
         if (global.get("error") != null) {
-            await channel.send("Semp.js here, an error occured in the previous session. ```" + global.get("error") + "```");
+            await channel.send("Semp.js here, an error occured in the previous session. ```" + JSON.stringify(global.get("error")) + "```");
             global.set("error", null);
         }
     },

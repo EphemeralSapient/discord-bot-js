@@ -24,9 +24,50 @@ module.exports = {
 
         // Mentions check and notify the user when online.
         if (withoutMentionsMsg != lmsg) {
+            let mentionIDs = lmsg.match(/<@(\d+)>/g).map(mention => mention.replace(/<@(\d+)>/g, '$1'));
+
+            const unread = global.get("unread");
+            const unread_users = [];
+            for (let mention of mentionIDs) {
+                const user = global.client.users.cache.get(mention);
+                if (user) {
+                    const member = global.defaultGuild.members.cache.get(mention);
+
+                    if (member) {
+                        const presence = member.presence;
+                        let status;
+                        if (presence) {
+                            status = presence.status;
+                        } else {
+                            status = 'offline'
+                        }
+                        if (status != "online") {
+                            if (unread[mention] == null) {
+                                unread[mention] = []
+                            }
+
+                            unread[mention].push([message.author.id, `https://discord.com/channels/${message.guildId}/${message.channelId}/${message.id}`])
+                            console.log(unread[mention])
+                            unread_users.push(mention)
+                        }
+                    } else {
+                        console.log('User is not a member of any guild');
+                        message.channel.send('User is not a member of any guild');
+                    }
+                } else {
+                    console.log('User not found');
+                    message.channel.send('User not found');
+                }
+
+
+            }
+            global.set("unread", unread);
+
+            if (unread_users.length > 0) {
+                message.channel.send(`<@!${message.author.id}> It seems like the users that you've mentioned [ ${unread_users} ] are not currently available.\n\nOnce they're up, I'll notify them.`);
+            }
             // Message contains mention
             if (global["debug_mention"] == "true") {
-                let mentionIDs = lmsg.match(/<@(\d+)>/g).map(mention => mention.replace(/<@(\d+)>/g, '$1'));
                 await message.channel.send(String(mentionIDs.length) + " mentions : " + mentionIDs)
             }
         }
@@ -62,9 +103,8 @@ module.exports = {
             await message.delete()
         }
 
-        // console.log(message)
         if (global["debug_message"] == "true") {
-            await message.channel.send(`message : ${message}`)
+            console.log(message)
         }
     },
 };

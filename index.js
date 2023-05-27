@@ -2,9 +2,9 @@ require('dotenv').config();
 
 const fs = require('node:fs');
 const path = require('node:path');
-const { Client, Collection, GatewayIntentBits } = require('discord.js');
+const { Client, Collection, GatewayIntentBits, IntentsBitField } = require('discord.js');
 const token = process.env.token;
-const client = new Client({ intents: [GatewayIntentBits.Guilds, GatewayIntentBits.GuildMessages, GatewayIntentBits.MessageContent, GatewayIntentBits.GuildPresences, GatewayIntentBits.GuildMessageTyping] });
+const client = new Client({ intents: [GatewayIntentBits.Guilds, GatewayIntentBits.GuildMessages, GatewayIntentBits.MessageContent, GatewayIntentBits.GuildPresences, GatewayIntentBits.GuildMessageTyping, GatewayIntentBits.GuildMembers, GatewayIntentBits.GuildMessageReactions] });
 const keep_alive = require('./keep_alive.js');
 
 // Acceptable commands stored as collections.
@@ -157,12 +157,16 @@ global.generateCat = async() => {
     }
 }
 
+// Global variables
+
+global.client = client;
+
 // Error handling
 process.on('uncaughtException', (err) => {
     console.error('Uncaught Exception:');
     console.error(err);
 
-    global.set("error", err);
+    global.set("error", JSON.stringify(err));
 });
 
 // Start listening.
