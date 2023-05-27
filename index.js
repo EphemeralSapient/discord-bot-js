@@ -97,6 +97,10 @@ global.sendMessage = async(messageString, channel) => {
     const chunkSize = 1500;
     const chunks = [];
 
+    if (channel == null) {
+        channel = global["defaultChannel"];
+    }
+
     for (let i = 0; i < messageString.length; i += chunkSize) {
         chunks.push(messageString.substring(i, i + chunkSize));
     }
@@ -121,6 +125,21 @@ global.setFFlag = (name, value) => {
     return oldValue;
 }
 
+global.get = (name) => {
+    const fastFlagsFile = 'temp.json';
+    const fastFlagsData = JSON.parse(fs.readFileSync(fastFlagsFile));
+    return fastFlagsData[name]
+}
+
+global.set = (name, value) => {
+    const fastFlagsFile = 'temp.json';
+    const fastFlagsData = JSON.parse(fs.readFileSync(fastFlagsFile));
+    let oldValue = fastFlagsData[name] || "NULL";
+    fastFlagsData[name] = value;
+    fs.writeFileSync(fastFlagsFile, JSON.stringify(fastFlagsData, null, 4));
+    return oldValue;
+}
+
 global.generateCat = async() => {
     try {
         const response = await fetch('https://api.thecatapi.com/v1/images/search?mime_types=gif', {
@@ -138,6 +157,13 @@ global.generateCat = async() => {
     }
 }
 
+// Error handling
+process.on('uncaughtException', (err) => {
+    console.error('Uncaught Exception:');
+    console.error(err);
+
+    global.set("error", err);
+});
 
 // Start listening.
 

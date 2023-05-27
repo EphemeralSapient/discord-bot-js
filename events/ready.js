@@ -1,16 +1,29 @@
 const { Events } = require('discord.js');
+const guildId = '1086613043896668210';
+const channelId = '1086613044429324309';
 
 module.exports = {
     name: Events.ClientReady,
     once: true,
-    execute(client) {
+    async execute(client) {
         console.log(`Ready! Logged in as ${client.user.tag}`);
-        client.user.setPresence({
-            status: 'online',
-            activity: {
-                name: 'with a presence.',
-                type: 'PLAYING'
-            }
-        });
+        const guild = client.guilds.cache.get(guildId);
+        if (!guild) {
+            console.error(`Unable to find guild with ID ${guildId}`);
+            return;
+        }
+
+        const channel = guild.channels.cache.get(channelId);
+        if (!channel) {
+            console.error(`Unable to find channel with ID ${channelId}`);
+            return;
+        }
+
+        global["defaultChannel"] = channel;
+
+        if (global.get("error") != null) {
+            await channel.send("Semp.js here, an error occured in the previous session. ```" + global.get("error") + "```");
+            global.set("error", null);
+        }
     },
 };
