@@ -63,7 +63,8 @@ module.exports = {
         }
 
         // console.log(message)
-        if (global["debug_message"] == "true")
-            await global.sendMessage(`message : ${message}`, message.channel)
+        if (global["debug_message"] == "true") {
+            await message.sendMessage(`message : ${message}`)
+        }
     },
 };
