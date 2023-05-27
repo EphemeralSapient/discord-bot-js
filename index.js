@@ -96,13 +96,13 @@ global.sendMessage = async(messageString, channel) => {
     });
 };
 
-global.getFFlag = async(name) => {
+global.getFFlag = (name) => {
     const fastFlagsFile = 'fastFlags.json';
     const fastFlagsData = JSON.parse(fs.readFileSync(fastFlagsFile));
     return fastFlagsData[name]
 }
 
-global.setFFlag = async(name, value) => {
+global.setFFlag = (name, value) => {
     const fastFlagsFile = 'fastFlags.json';
     const fastFlagsData = JSON.parse(fs.readFileSync(fastFlagsFile));
     let oldValue = fastFlagsData[name] || "NULL";
