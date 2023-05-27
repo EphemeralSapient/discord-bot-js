@@ -48,10 +48,14 @@ for (const file of eventFiles) {
 
 // Updating the fast flag values from json file
 const fFlagData = JSON.parse(fs.readFileSync('fastFlags.json'));
-for (const [key, value] of fFlagData.entries()) {
-    global[key] = value;
+for (const key in fFlagData) {
+    if (fFlagData.hasOwnProperty(key)) {
+        const value = fFlagData[key];
+        // Use the key and value as needed
+        console.log(`Key: ${key}, Value: ${value}`);
+        global[key] = value;
+    }
 }
-
 // Loading the AI Bots
 
 global.chatReadAI_state = false
