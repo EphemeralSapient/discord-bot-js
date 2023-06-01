@@ -1,14 +1,12 @@
 {
     "conversations": {
-        "rows": [
-            {
-                "id": "id",
-                "c": "c_40ab884dce2ef878",
-                "r": "r_427b3226fade6907",
-                "rc": "rc_427b3226fade6b75",
-                "lastActive": 1685166881564
-            }
-        ],
+        "rows": [{
+            "id": "id",
+            "c": "c_40ab884dce2ef878",
+            "r": "r_427b3226fade6907",
+            "rc": "rc_427b3226fade6b75",
+            "lastActive": 1685166881564
+        }],
         "name": "conversations"
     }
 }
