@@ -16,14 +16,14 @@ module.exports = {
         const unread_enrollment = global.get("unread_enrollment");
         try {
 
-            unread_enrollment[interaction.author.id] = opt == true ? true : null;
+            unread_enrollment[interaction.member.id] = opt == true ? true : null;
             global.set("unread_enrollment", unread_enrollment);
 
             await interaction.editReply("Successfully changed the status to " + opt);
         } catch (error) {
             // Handle any errors
             console.error(error);
-            await interaction.editReply("FAILED | " + interaction);
+            await interaction.editReply("FAILED | " + error);
         }
     },
 };
