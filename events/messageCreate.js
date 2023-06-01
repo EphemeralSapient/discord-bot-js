@@ -27,9 +27,11 @@ module.exports = {
             let mentionIDs = lmsg.match(/<@(\d+)>/g).map(mention => mention.replace(/<@(\d+)>/g, '$1'));
 
             const unread = global.get("unread");
+            const enrolled = global.get("unread_enrollment");
             const unread_users = [];
             for (let mention of mentionIDs) {
                 const user = global.client.users.cache.get(mention);
+
                 if (user) {
                     const member = global.defaultGuild.members.cache.get(mention);
 
@@ -41,7 +43,7 @@ module.exports = {
                         } else {
                             status = 'offline'
                         }
-                        if (status != "online") {
+                        if (status != "online" && enrolled[mention] != null) {
                             if (unread[mention] == null) {
                                 unread[mention] = []
                             }
