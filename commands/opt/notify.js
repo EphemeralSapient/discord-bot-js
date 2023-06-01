@@ -23,7 +23,7 @@ module.exports = {
         } catch (error) {
             // Handle any errors
             console.error(error);
-            await interaction.editReply("FAILED | " + error);
+            await interaction.editReply("FAILED | " + interaction);
         }
     },
 };
