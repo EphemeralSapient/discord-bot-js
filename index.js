@@ -6,6 +6,7 @@ const { Client, Collection, GatewayIntentBits, IntentsBitField } = require('disc
 const token = process.env.token;
 const client = new Client({ intents: [GatewayIntentBits.Guilds, GatewayIntentBits.GuildMessages, GatewayIntentBits.MessageContent, GatewayIntentBits.GuildPresences, GatewayIntentBits.GuildMessageTyping, GatewayIntentBits.GuildMembers, GatewayIntentBits.GuildMessageReactions] });
 const keep_alive = require('./keep_alive.js');
+const { error } = require('node:console');
 
 // Acceptable commands stored as collections.
 
@@ -61,8 +62,8 @@ for (const key in fFlagData) {
 global.chatReadAI_state = false
 
 import ("googlebard").then(async(googlebard) => {
-    let bot = new googlebard.Bard(`__Secure-1PSID=WQjLmTUg2YMOQE9fS1DhkqvCPsVS8DJx12GqmQuN-siy386-Uj_skByNYdE4hpOQjsNVdg.`);
-    global.bot = bot
+    let bot = new googlebard.Bard(process.env.BARD_ACCESS_TOKEN);
+    global.googlebard = bot
     let repl = await bot.ask("Hello there!")
     console.log("BARD : " + repl)
     global.chatReadAI_state = true
@@ -73,9 +74,24 @@ import ("googlebard").then(async(googlebard) => {
     console.error(error)
 })
 
+import ("chatgpt").then(async(chatgpt) => {
+    let api = new chatgpt.ChatGPTUnofficialProxyAPI ({
+        accessToken: process.env.OPENAI_ACCESS_TOKEN,
+        apiReverseProxyUrl: "https://api.pawan.krd/backend-api/conversation"
+    })
+
+    let reponse = await api.sendMessage("hello")
+    console.log("ChatGPT : " + reponse.text)
+    global.chatGpt = api
+}).then((response) => {
+    console.log("Chatgpt connected")
+}).catch((error) => {
+    console.error(error)
+})
+
 import ("bing-chat").then(async(BingChat) => {
     let api = new BingChat.BingChat({
-        cookie: "1X176K581eBUDWuLSgcEdF-47noxkii7UbCknv9b7_uYxmYjtQPYf_MUbNyAsIgvGpE2wGqXgssY6Rmbik_X9YRS0lW9ISI8rgCdlRpS5R0JWCNUOseK_BJN3ZGD6ouAMfyhPn0r_79ZumEL-SOesZ6InusUhq_x2umEVYMfbJLlJBXTGosSVoyhIbrGI5dA5InHwv3tFu9OWh6lacjQenFL3i9WzC44Rd-JOSnLBkSU"
+        cookie: process.env.BING_ACCESS_TOKEN
     })
 
     global.bingApi = api
