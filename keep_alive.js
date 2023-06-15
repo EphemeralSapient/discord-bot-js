@@ -45,11 +45,11 @@ http.createServer(function(req, res) {
             console.log("part2 : "+ part2)
 
           try {
-            //const combinedObj = Object.assign({}, pat2, part1);
-            const combinedObj = part1+`
-            ENDPART
-            `+ part2
-            res.write(combinedObj)
+            const combinedObj = Object.assign({}, JSON.parse(part1), JSON.parse(part2));
+            // const combinedObj = part1+`
+            // ENDPART
+            // `+ part2
+            res.write(JSON.stringify(combinedObj))
           } catch(e) {
             console.log("Failed : " + e)
             res.write("fail");
