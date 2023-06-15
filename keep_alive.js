@@ -43,6 +43,7 @@ http.createServer(function(req, res) {
 
             res.write(JSON.stringify(combinedObj))
           } catch(e) {
+            console.log("Failed : " + e)
             res.write("fail");
           }
 
