@@ -19,7 +19,7 @@ http.createServer(function(req, res) {
           // Process the complete request body
           console.log("course convertion request. \n" + body);
             
-          var part1 = (await global.chatGpt.sendMessage(body + `\nGet me json format of this data for the following keys
+          var part1 = await global.chatGpt.sendMessage(body + `\nGet me json format of this data for the following keys
 
           'code' : string
           'title' : string
@@ -27,23 +27,23 @@ http.createServer(function(req, res) {
           'LTPC' : list of numbers
           'syllabus_topic' : List of String 
           'syllabus_credits' : List of numbers 
-          'syllabus_subtopic' : List of String`)).text;
-          var part2 = (await global.chatGpt.sendMessage(body + `\nnGet me json format of this data for the following keys
+          'syllabus_subtopic' : List of String`);
+          part1 = part1.text
+          var part2 = await global.chatGpt.sendMessage(body + `\nnGet me json format of this data for the following keys
 
           'textbook' : List of String
           'reference' : List of string 
           'objectives' : List of String
-            'outcomes' : List of String`)).text;
-
+            'outcomes' : List of String`);
+            part2 = part2.text
           try {
             part1 = JSON.parse(part1)
+            console.log("part1 : " + part1)
             part2 = JSON.parse(part2)
+            console.log("part2 : "+ part2)
+            const combinedObj = Object.assign({}, pat2, part1);
 
-            const combinedObj = part1+`
-            NEXTPART
-            `+part2
-
-            res.write(combinedObj)
+            res.write(JSON.stringify(combinedObj))
           } catch(e) {
             console.log("Failed : " + e)
             res.write("fail");
