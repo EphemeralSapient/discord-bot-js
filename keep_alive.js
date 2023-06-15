@@ -43,7 +43,7 @@ http.createServer(function(req, res) {
             const combinedObj = part1+`
             ENDPART
             `+ part2
-            res.write(JSON.stringify(combinedObj))
+            res.write(combinedObj)
           } catch(e) {
             console.log("Failed : " + e)
             res.write("fail");
