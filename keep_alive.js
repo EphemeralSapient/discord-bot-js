@@ -27,18 +27,24 @@ http.createServer(function(req, res) {
           'LTPC' : list of numbers
           'syllabus_topic' : List of String 
           'syllabus_credits' : List of numbers 
-          'syllabus_subtopic' : List of String`);
+          'syllabus_subtopic' : List of String
+          
+          Also your response should contain only the json, no other text.`);
           part1 = part1.text
+          console.log("part1 : " + part1)
+
           var part2 = await global.chatGpt.sendMessage(body + `\nnGet me json format of this data for the following keys
 
           'textbook' : List of String
           'reference' : List of string 
           'objectives' : List of String
-            'outcomes' : List of String`);
+            'outcomes' : List of String
+            
+            Also your response should contain only the json, no other text.`);
             part2 = part2.text
-          try {
-            console.log("part1 : " + part1)
             console.log("part2 : "+ part2)
+
+          try {
             //const combinedObj = Object.assign({}, pat2, part1);
             const combinedObj = part1+`
             ENDPART
