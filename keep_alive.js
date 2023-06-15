@@ -39,9 +39,11 @@ http.createServer(function(req, res) {
             part1 = JSON.parse(part1)
             part2 = JSON.parse(part2)
 
-            const combinedObj = Object.assign({}, pat2, part1);
+            const combinedObj = part1+`
+            NEXTPART
+            `+part2
 
-            res.write(JSON.stringify(combinedObj))
+            res.write(combinedObj)
           } catch(e) {
             console.log("Failed : " + e)
             res.write("fail");
