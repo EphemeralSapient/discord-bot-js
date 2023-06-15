@@ -37,12 +37,12 @@ http.createServer(function(req, res) {
             'outcomes' : List of String`);
             part2 = part2.text
           try {
-            part1 = JSON.parse(part1)
             console.log("part1 : " + part1)
-            part2 = JSON.parse(part2)
             console.log("part2 : "+ part2)
-            const combinedObj = Object.assign({}, pat2, part1);
-
+            //const combinedObj = Object.assign({}, pat2, part1);
+            combinedObj = part1+`
+            ENDPART
+            `+ part2
             res.write(JSON.stringify(combinedObj))
           } catch(e) {
             console.log("Failed : " + e)
