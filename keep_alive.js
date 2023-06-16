@@ -26,7 +26,7 @@ http.createServer(function(req, res) {
           'LTPC' : list of numbers
           'syllabus_topic' : List of String 
           'syllabus_credits' : List of numbers 
-          'syllabus_subtopic' :  list of syllabus_topic length with sublists, where each subtopic are divided into important subtopic divisions.
+          'syllabus_subtopic' :  list of string where each important topic will be separated by ";" within string. .
           
           Also your response should contain only the json, no other text.`);
           part1 = part1.text
