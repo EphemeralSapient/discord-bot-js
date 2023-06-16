@@ -23,11 +23,10 @@ http.createServer(function(req, res) {
 
           'code' : string
           'title' : string
-          'title' : string 
           'LTPC' : list of numbers
           'syllabus_topic' : List of String 
           'syllabus_credits' : List of numbers 
-          'syllabus_subtopic' : List of String
+          'syllabus_subtopic' :  list of syllabus_topic length with sublists, where each subtopic are divided into important subtopic divisions.
           
           Also your response should contain only the json, no other text.`);
           part1 = part1.text
