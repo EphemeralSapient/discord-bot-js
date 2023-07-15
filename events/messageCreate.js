@@ -89,7 +89,7 @@ module.exports = {
         }
         if (global.chatReadAI_state && (withoutMentionsMsg.includes("semp.js") || withoutMentionsMsg.includes("semp ai") || withoutMentionsMsg.includes("semppy") || withoutMentionsMsg.includes("semp js"))) {
             message.channel.sendTyping()
-            let response = await global.chatGpt.sendMessage(`consider yourself as "semp.js" and your creator name is "semp" now read this message "${lmsg}" sent by user "${message.author.username}" in discord. Give me your response`)
+            let response = await global.chatGpt.sendMessage(` message is "${lmsg}" sent by user "${message.author.username}" in discord. Give me your response only.`)
             console.log(response.text)
             let verify = String(response.text)
             verify = verify
