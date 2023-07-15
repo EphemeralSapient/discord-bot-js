@@ -5,6 +5,7 @@
         "discord.js": "^14.9.0",
         "dotenv": "^16.0.3",
         "googlebard": "^1.0.4",
+        "nodemon": "^3.0.1",
         "pm2": "^5.3.0"
     },
     "scripts": {
