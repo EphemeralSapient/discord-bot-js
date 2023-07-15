@@ -75,13 +75,13 @@ import ("googlebard").then(async(googlebard) => {
 })
 
 import ("chatgpt").then(async(chatgpt) => {
-    let api = new chatgpt.ChatGPTUnofficialProxyAPI ({
-        accessToken: process.env.OPENAI_ACCESS_TOKEN,
-        apiReverseProxyUrl: "https://api.pawan.krd/backend-api/conversation"
+    let api = new chatgpt.ChatGPTAPI ({
+        apiKey: process.env.OPENAI_ACCESS_TOKEN,
+        //apiReverseProxyUrl: "https://ai.fakeopen.com/api/conversation"
     })
 
-    let reponse = await api.sendMessage("hello")
-    console.log("ChatGPT : " + reponse.text)
+    // let reponse = await api.sendMessage("hello")
+    // console.log("ChatGPT : " + reponse.text)
     global.chatGpt = api
 }).then((response) => {
     console.log("Chatgpt connected")
