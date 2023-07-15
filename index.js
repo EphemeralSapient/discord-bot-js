@@ -84,7 +84,7 @@ import ("chatgpt").then(async(chatgpt) => {
     // console.log("ChatGPT : " + reponse.text)
     global.chatGpt = api
 }).then((response) => {
-    console.log("Chatgpt connected")
+    console.log("Connected to chatgpt")
 }).catch((error) => {
     console.error(error)
 })
